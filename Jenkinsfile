@@ -9,7 +9,7 @@ pipeline {
 
     stage('Test') {
       parallel {
-        stage('PHP 7.3') {
+                stage('PHP 7.3') {
           agent {
             docker {
               image 'allebb/phptestrunner-73:latest'
@@ -29,8 +29,9 @@ pipeline {
             sh 'chmod -R a+w $PWD && chmod -R a+w $WORKSPACE'
             junit 'report/*.xml'
           }
-        }  
-      stage('PHP 7.4') {
+        }
+
+        stage('PHP 7.4') {
           agent {
             docker {
               image 'allebb/phptestrunner-74:latest'
@@ -50,7 +51,7 @@ pipeline {
             sh 'chmod -R a+w $PWD && chmod -R a+w $WORKSPACE'
             junit 'report/*.xml'
           }
-        
+        }
 
       }
     }
